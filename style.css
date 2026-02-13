@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #FF9A9E 0%, #FAD0C4 100%);
+    background: linear-gradient(135deg, #FFC1CC 0%, #FFE0E0 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +17,11 @@ body {
     text-align: center;
     max-width: 400px;
     position: relative;
+    transition: transform 0.3s;
+}
+
+.card.active {
+    transform: scale(1.05);
 }
 
 h1 {
@@ -50,9 +55,9 @@ button:hover {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #FF4D6D;
+    background-color: red;
     transform: rotate(-45deg);
-    animation: float 3s infinite;
+    animation: float 3s linear infinite;
 }
 
 .heart::before,
@@ -61,21 +66,29 @@ button:hover {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #FF4D6D;
+    background-color: red;
     border-radius: 50%;
 }
 
-.heart::before {
-    top: -10px;
-    left: 0;
-}
+.heart::before { top: -10px; left: 0; }
+.heart::after { top: 0; left: 10px; }
 
-.heart::after {
-    top: 0;
-    left: 10px;
+/* animasi confetti */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: gold;
+    opacity: 0.9;
+    animation: confettiFall linear forwards;
 }
 
 @keyframes float {
-    0% { transform: translateY(0) rotate(-45deg); opacity: 1;}
-    100% { transform: translateY(-300px) rotate(-45deg); opacity: 0;}
+    0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+    100% { transform: translateY(-300px) rotate(-45deg); opacity: 0; }
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(600px) rotate(720deg); opacity: 0; }
 }
